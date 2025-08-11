@@ -52,7 +52,7 @@ export default function Catalog() {
   const [purpose, setPurpose] = useState("");
   const [hardMin, setHardMin] = useState<string>("");
   const [hardMax, setHardMax] = useState<string>("");
-  const [sort, setSort] = useState<"marka" | "hardness">("marka");
+  const [sort, setSort] = useState<"marka" | "hardness" | "tu">("marka");
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["catalog", page, search, purpose, sort],
@@ -64,7 +64,8 @@ export default function Catalog() {
       if (purpose.trim()) query = query.ilike("purpose", `%${purpose.trim()}%`);
 
       // Server-side sort by marka; hardness sort is handled client-side since column is text
-      query = query.order("marka", { ascending: true });
+      const orderColumn = sort === "tu" ? "tu" : "marka";
+      query = query.order(orderColumn, { ascending: true });
 
       const from = (page - 1) * PAGE_SIZE;
       const to = from + PAGE_SIZE - 1;
@@ -136,6 +137,7 @@ export default function Catalog() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="marka">По марке</SelectItem>
+              <SelectItem value="tu">По ТУ</SelectItem>
               <SelectItem value="hardness">По твердости (клиентская)</SelectItem>
             </SelectContent>
           </Select>
@@ -148,6 +150,7 @@ export default function Catalog() {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead>ТУ</TableHead>
                 <TableHead>Марка</TableHead>
                 <TableHead>Назначение</TableHead>
                 <TableHead>Условия работы</TableHead>
@@ -155,7 +158,6 @@ export default function Catalog() {
                 <TableHead>Прочность (МПа)</TableHead>
                 <TableHead>Удлинение (%)</TableHead>
                 <TableHead>Срок хранения (мес.)</TableHead>
-                <TableHead>ТУ</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -174,6 +176,7 @@ export default function Catalog() {
               ) : (
                 filtered.map((item, idx) => (
                   <TableRow key={`${item.marka}-${idx}`}>
+                    <TableCell>{item.tu}</TableCell>
                     <TableCell>{item.marka}</TableCell>
                     <TableCell>{item.purpose}</TableCell>
                     <TableCell>{item.work_conditions}</TableCell>
@@ -181,7 +184,6 @@ export default function Catalog() {
                     <TableCell>{item.strength_mpa}</TableCell>
                     <TableCell>{item.elongation_percent}</TableCell>
                     <TableCell>{item.shelf_life_months}</TableCell>
-                    <TableCell>{item.tu}</TableCell>
                   </TableRow>
                 ))
               )}
