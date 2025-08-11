@@ -33,13 +33,24 @@ function drawImageToCanvas(image: HTMLImageElement) {
 
 export const loadImage = (src: string | Blob): Promise<HTMLImageElement> => {
   return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous"; // handle same-origin uploads and remote urls
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = typeof src === "string" ? src : URL.createObjectURL(src);
-  });
-};
+    const img = new Image()
+    img.crossOrigin = "anonymous" // handle same-origin uploads and remote urls
+    img.onload = () => {
+      // Revoke object URL created for Blob inputs to avoid leaks
+      if (typeof src !== "string" && img.src.startsWith("blob:")) {
+        URL.revokeObjectURL(img.src)
+      }
+      resolve(img)
+    }
+    img.onerror = (e) => {
+      if (typeof src !== "string" && img.src.startsWith("blob:")) {
+        URL.revokeObjectURL(img.src)
+      }
+      reject(e)
+    }
+    img.src = typeof src === "string" ? src : URL.createObjectURL(src)
+  })
+}
 
 export type ExtractMode = "keep-subject" | "keep-background";
 

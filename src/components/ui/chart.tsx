@@ -65,6 +65,15 @@ const ChartContainer = React.forwardRef<
 })
 ChartContainer.displayName = "Chart"
 
+// Sanitize color strings to prevent CSS injection
+const SAFE_COLOR = /^(#[0-9a-fA-F]{3,8}|rgb(a)?\([^)]*\)|hsl(a)?\([^)]*\)|var\(--[a-zA-Z0-9-_]+\))$/
+const sanitizeColor = (value?: string) => {
+  if (!value) return undefined
+  const trimmed = value.trim()
+  if (trimmed.length > 100) return undefined
+  return SAFE_COLOR.test(trimmed) ? trimmed : undefined
+}
+
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
     ([_, config]) => config.theme || config.color
@@ -83,9 +92,10 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 ${prefix} [data-chart=${id}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
-    const color =
+    const rawColor =
       itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
       itemConfig.color
+    const color = sanitizeColor(rawColor as string | undefined)
     return color ? `  --color-${key}: ${color};` : null
   })
   .join("\n")}

@@ -13,6 +13,9 @@ const BgRemoval: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const MAX_FILE_SIZE_MB = 10;
+  const prevSourceUrlRef = useRef<string | null>(null);
+  const prevResultUrlRef = useRef<string | null>(null);
 
   const handleProcess = async (mode: ExtractMode) => {
     try {
@@ -22,8 +25,12 @@ const BgRemoval: React.FC = () => {
       const img = await loadImage(sourceUrl);
       imgRef.current = img;
       const blob = await extractWithSegmentation(img, mode);
+      if (prevResultUrlRef.current && prevResultUrlRef.current.startsWith('blob:')) {
+        URL.revokeObjectURL(prevResultUrlRef.current);
+      }
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
+      prevResultUrlRef.current = url;
     } catch (e: any) {
       console.error(e);
       setError(e?.message || "Failed to process image");
@@ -33,11 +40,31 @@ const BgRemoval: React.FC = () => {
   };
 
   const onFileChange: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const localUrl = URL.createObjectURL(file);
-    setSourceUrl(localUrl);
-    setResultUrl(null);
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    if (!file.type.startsWith('image/')) {
+      setError('Please select a valid image file')
+      return
+    }
+    if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+      setError(`File too large. Max ${MAX_FILE_SIZE_MB} MB`)
+      return
+    }
+
+    // Revoke previous blob URL to avoid leaks
+    if (sourceUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(sourceUrl)
+    }
+    if (prevResultUrlRef.current && prevResultUrlRef.current.startsWith('blob:')) {
+      URL.revokeObjectURL(prevResultUrlRef.current)
+      prevResultUrlRef.current = null
+    }
+
+    const localUrl = URL.createObjectURL(file)
+    prevSourceUrlRef.current = localUrl
+    setSourceUrl(localUrl)
+    setResultUrl(null)
   };
 
   return (
