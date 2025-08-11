@@ -157,9 +157,19 @@
     .hero-right { position: relative; flex: 0 0 45%; max-width: 45%; }
     .hero-sub { color: var(--tokens-colors-text-dark-secondary); margin-top: var(--tokens-spacing-m); max-width: 56ch; }
     .hero-cta { display: flex; gap: var(--tokens-spacing-m); justify-content: flex-start; margin-top: var(--tokens-spacing-l); }
-    .trusted-by { display: flex; gap: var(--tokens-spacing-l); margin-top: var(--tokens-spacing-l); }
+    .trusted-label { display: block; margin-top: var(--tokens-spacing-l); color: var(--tokens-colors-text-dark-tertiary); }
+    .trusted-by { display: flex; gap: var(--tokens-spacing-l); margin-top: var(--tokens-spacing-s); }
     .hero-image { display: block; width: 100%; height: auto; border-radius: var(--tokens-effects-borderRadii-xl); }
-    .glow-accent { content: ""; position: absolute; left: 50%; top: 50%; width: 460px; height: 460px; transform: translate(-50%, -50%); border-radius: var(--tokens-effects-borderRadii-full); box-shadow: var(--tokens-effects-shadows-glowAccent); z-index: -1; }
+    /* Atmospheric glows behind the graphic */
+    .glow-accent-large { content: ""; position: absolute; left: 55%; top: 45%; width: 520px; height: 520px; transform: translate(-50%, -50%); border-radius: var(--tokens-effects-borderRadii-full); box-shadow: var(--tokens-effects-shadows-glowAccent); z-index: -1; }
+    .glow-dark { content: ""; position: absolute; right: -10%; bottom: -10%; width: 360px; height: 360px; border-radius: var(--tokens-effects-borderRadii-full); box-shadow: var(--tokens-effects-shadows-glowDark); z-index: -1; }
+    /* Divider between consecutive dark sections */
+    .dark-section + .dark-section { border-top: 1px solid var(--tokens-colors-border-dark-default); }
+    @media (min-width: 1280px) {
+      .hero-left { flex-basis: 58%; max-width: 58%; }
+      .hero-right { flex-basis: 42%; max-width: 42%; }
+      .hero-image { margin-top: calc(var(--tokens-spacing-xxl) * -1); }
+    }
     @media (max-width: 900px) {
       .hero-inner { flex-direction: column; }
       .hero-left, .hero-right { flex: 0 0 auto; max-width: 100%; width: 100%; }
@@ -199,6 +209,7 @@
     .footer .copyright { color: var(--tokens-colors-text-dark-tertiary); margin-top: var(--tokens-spacing-xxl); padding-top: var(--tokens-spacing-l); border-top: 1px solid var(--tokens-colors-border-dark-default); font-size: var(--tokens-typography-caption-size); }
 
     /* Responsive */
+    @media (max-width: 1400px) { .card-grid-5 { grid-template-columns: repeat(4, 1fr); } }
     @media (max-width: 1200px) { .card-grid-5 { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -232,7 +243,7 @@
 
   <main role="main">
     <!-- Hero Section -->
-    <section class="hero section" aria-labelledby="hero-title">
+    <section class="hero section dark-section" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <div class="hero-left">
           <h1 id="hero-title" class="typo-display">Empower developers. Engineer excellence.</h1>
@@ -241,6 +252,7 @@
             <a href="#contact" class="btn btn-primary-onDark typo-link">Book a consultation</a>
             <a href="#services" class="btn btn-secondary-onDark typo-link">Explore our services →</a>
           </div>
+          <span class="trusted-label typo-caption">TRUSTED BY INDUSTRY LEADERS</span>
           <div class="trusted-by">
             <span class="typo-caption" style="color: var(--tokens-colors-text-dark-tertiary);">Google</span>
             <span class="typo-caption" style="color: var(--tokens-colors-text-dark-tertiary);">amazon</span>
@@ -248,14 +260,15 @@
           </div>
         </div>
         <div class="hero-right">
-          <div class="glow-accent" aria-hidden="true"></div>
+          <div class="glow-accent-large" aria-hidden="true"></div>
+          <div class="glow-dark" aria-hidden="true"></div>
           <img src="https://via.placeholder.com/450x400" alt="Abstract 3D graphic" class="hero-image" loading="lazy" width="450" height="400" />
         </div>
       </div>
     </section>
 
     <!-- Our services -->
-    <section id="services" class="services section" aria-labelledby="services-title">
+    <section id="services" class="services section dark-section" aria-labelledby="services-title">
       <div class="container">
         <h2 id="services-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Our services</h2>
         <div class="card-grid-3">
@@ -290,7 +303,7 @@
     </section>
 
     <!-- Empowering developers through open source -->
-    <section id="oss" class="products section" aria-labelledby="oss-title">
+    <section id="oss" class="products section dark-section" aria-labelledby="oss-title">
       <div class="container">
         <h2 id="oss-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Empowering developers through open source</h2>
         <div class="card-grid-5">
