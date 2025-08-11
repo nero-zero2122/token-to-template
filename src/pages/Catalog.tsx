@@ -102,7 +102,7 @@ export default function Catalog() {
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
-    <main>
+    <main id="catalog">
       <header className="container mx-auto max-w-6xl py-8">
         <h1 className="text-3xl font-semibold">Каталог резиновых смесей</h1>
         <p className="text-muted-foreground mt-2">Поиск и фильтры из базы Supabase</p>
