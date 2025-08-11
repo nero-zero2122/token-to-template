@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invertase — Empower developers. Engineer excellence.</title>
-  <meta name="description" content="We engineer world‑class developer experiences: SDKs, docs, and platform tooling that scale." />
+  <title>Строймаш — Резиновые смеси от производителя</title>
+  <meta name="description" content="Товарные резиновые смеси по утвержденной рецептуре с гарантированными показателями качества." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="canonical" href="/landing.html" />
-  <meta property="og:title" content="Invertase — Developer Experience & Engineering" />
-  <meta property="og:description" content="We engineer world‑class developer experiences: SDKs, docs, and platform tooling that scale." />
+  <meta property="og:title" content="Строймаш — Резиновые смеси от производителя" />
+  <meta property="og:description" content="Товарные резиновые смеси по утвержденной рецептуре с гарантированными показателями качества." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Строймаш",
+    "url": "/landing.html",
+    "description": "Товарные резиновые смеси по утвержденной рецептуре с гарантированными показателями качества. Получите предсказуемый результат в каждой поставке."
+  }
+  </script>
   <style>
     /* Design tokens from JSON — referenced as CSS variables
        Example mapping: tokens.colors.brand.primary -> --tokens-colors-brand-primary */
@@ -226,18 +234,16 @@
   <header class="header" role="banner">
     <div class="container nav">
       <div class="nav-left">
-        <a href="#" class="logo typo-link" aria-label="Invertase logo">INVERTASE</a>
+        <a href="#" class="logo typo-link" aria-label="Строймаш логотип">Строймаш</a>
         <nav class="nav-links" aria-label="Primary">
-          <a class="nav-link typo-link" href="#services">Services</a>
-          <a class="nav-link typo-link" href="#oss">Open source</a>
-          
-          <a class="nav-link typo-link" href="#blog">Blog</a>
-          <a class="nav-link typo-link" href="#company">Company</a>
-          <a class="nav-link typo-link" href="/#catalog" target="_top">Каталог</a>
+          <a class="nav-link typo-link" href="/#catalog" target="_top">Продукция</a>
+          <a class="nav-link typo-link" href="#process">Процесс</a>
+          <a class="nav-link typo-link" href="#company">О нас</a>
+          <a class="nav-link typo-link" href="#contact">Контакты</a>
         </nav>
       </div>
       <div>
-        <a href="#contact" class="btn btn-primary-onDark typo-link">Get in touch</a>
+        <a href="#contact" class="btn btn-primary-onDark typo-link">Получить консультацию</a>
       </div>
     </div>
   </header>
@@ -247,119 +253,97 @@
     <section class="hero section dark-section" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <div class="hero-left">
-          <h1 id="hero-title" class="typo-display">Empower developers. Engineer excellence.</h1>
-          <p class="typo-bodyLarge hero-sub">We help technology companies provide exceptional developer experiences with premium SDKs, documentation, and robust platform tooling that scales.</p>
+          <h1 id="hero-title" class="typo-display">Резиновые смеси от производителя.</h1>
+          <p class="typo-bodyLarge hero-sub">Товарные резиновые смеси по утвержденной рецептуре с гарантированными показателями качества. Получите предсказуемый результат в каждой поставке.</p>
           <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary-onDark typo-link">Book a consultation</a>
-            <a href="#services" class="btn btn-secondary-onDark typo-link">Explore our services →</a>
-          </div>
-          <span class="trusted-label typo-caption">TRUSTED BY INDUSTRY LEADERS</span>
-          <div class="trusted-by">
-            <span class="typo-caption" style="color: var(--tokens-colors-text-dark-secondary);">Google</span>
-            <span class="typo-caption" style="color: var(--tokens-colors-text-dark-secondary);">amazon</span>
-            <span class="typo-caption" style="color: var(--tokens-colors-text-dark-secondary);">Canonical</span>
+            <a href="#contact" class="btn btn-primary-onDark typo-link">Получить консультацию</a>
+            <a href="/#catalog" target="_top" class="btn btn-secondary-onDark typo-link">Изучить продукцию →</a>
           </div>
         </div>
         <div class="hero-right">
           <div class="glow-accent-large" aria-hidden="true"></div>
           <div class="glow-dark" aria-hidden="true"></div>
-          <img src="https://via.placeholder.com/450x400" alt="Abstract 3D graphic" class="hero-image" loading="lazy" width="450" height="400" />
+          <img src="https://via.placeholder.com/450x400" alt="Иллюстрация резиновых смесей" class="hero-image" loading="lazy" width="450" height="400" />
         </div>
       </div>
     </section>
 
     <!-- Our services -->
-    <section id="services" class="services section dark-section" aria-labelledby="services-title">
+    <section id="features" class="services section dark-section" aria-labelledby="features-title">
       <div class="container">
-        <h2 id="services-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Our services</h2>
+        <h2 id="features-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Почему выбирают Строймаш?</h2>
         <div class="card-grid-3">
-          <article class="service-card" aria-label="SDK Design & Development">
+          <article class="service-card" aria-label="Гарантированное качество">
             <div class="service-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
-            <h3 class="service-heading typo-h2">SDK Design & Development</h3>
-            <p class="service-body typo-body">We craft ergonomic, well-documented SDKs that developers love to adopt and maintain.</p>
-            <a href="#consult" class="btn-tertiary typo-link">Learn more →</a>
+            <h3 class="service-heading typo-h2">Гарантированное качество</h3>
+            <p class="service-body typo-body">Проводим пооперационный контроль и лабораторные испытания каждой партии, чтобы гарантировать полное соответствие техническим требованиям.</p>
           </article>
 
-          <article class="service-card" aria-label="Developer Docs & DX">
+          <article class="service-card" aria-label="Собственная лаборатория">
             <div class="service-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M14 2v6a5 5 0 1 1-4 0V2"/></svg>
             </div>
-            <h3 class="service-heading typo-h2">Developer Docs & DX</h3>
-            <p class="service-body typo-body">From IA to code samples, we build documentation systems that reduce time-to-first-success.</p>
-            <a href="#consult" class="btn-tertiary typo-link">Learn more →</a>
+            <h3 class="service-heading typo-h2">Собственная лаборатория</h3>
+            <p class="service-body typo-body">Собственная лаборатория позволяет нам разрабатывать уникальные рецептуры и проверять физико-механические свойства продукции на каждом этапе.</p>
           </article>
 
-          <article class="service-card" aria-label="Platform Tooling">
+          <article class="service-card" aria-label="Экспертная поддержка">
             <div class="service-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
-            <h3 class="service-heading typo-h2">Platform Tooling</h3>
-            <p class="service-body typo-body">We design and build CLI tools, build pipelines, and release automation for scale.</p>
-            <a href="#consult" class="btn-tertiary typo-link">Learn more →</a>
+            <h3 class="service-heading typo-h2">Экспертная поддержка</h3>
+            <p class="service-body typo-body">Предоставляем профессиональные консультации и техническую поддержку на всех этапах сотрудничества, помогая выбрать идеальное решение для ваших задач.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- Empowering developers through open source -->
-    <section id="oss" class="products section dark-section" aria-labelledby="oss-title">
+    <section id="process" class="products section dark-section" aria-labelledby="process-title">
       <div class="container">
-        <h2 id="oss-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Empowering developers through open source</h2>
+        <h2 id="process-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Процесс изготовления резины</h2>
         <div class="card-grid-5">
-          <article class="product-card" aria-label="Package A">
-            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v8l-7 4-7-4V6z"/></svg></div>
-            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Package A</h3>
-            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">A reliable library for modern app development.</p>
+          <article class="product-card" aria-label="Сырье и контроль">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Сырье и контроль</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Сырье, поступающее на склад, проходит тщательную проверку на соответствие заявленным характеристикам.</p>
           </article>
 
-          <article class="product-card" aria-label="Tool B">
-            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/></svg></div>
-            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Tool B</h3>
-            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">CLI to streamline developer workflows.</p>
+          <article class="product-card" aria-label="Смешивание под давлением">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M12 3v18"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Смешивание под давлением</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Под давлением и при высоких температурах компоненты смешиваются в однородную массу.</p>
           </article>
 
-          <article class="product-card" aria-label="SDK C">
-            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/></svg></div>
-            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">SDK C</h3>
-            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Powerful SDK with first-class TypeScript types.</p>
+          <article class="product-card" aria-label="Вальцевание массы">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v6h18V2z"/><path d="M7 13h10"/><path d="M5 17h14"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Вальцевание массы</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">После смешивания резиновая масса вальцуется для придания ей необходимой формы и толщины.</p>
           </article>
 
-          <article class="product-card" aria-label="Infra D">
-            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M12 4v16"/></svg></div>
-            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Infra D</h3>
-            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Scalable infra templates and best practices.</p>
+          <article class="product-card" aria-label="Лабораторные испытания">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M14 2v6a5 5 0 1 1-4 0V2"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Лабораторные испытания</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">После вальцевания резиновая смесь проходит лабораторные испытания на соответствие стандартам качества.</p>
           </article>
 
-          <article class="product-card" aria-label="Docs E">
-            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M3 12h18"/><path d="M3 17h18"/></svg></div>
-            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Docs E</h3>
-            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Documentation kits for fast onboarding.</p>
+          <article class="product-card" aria-label="Отправка на хранение">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5z"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Отправка на хранение</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Готовая продукция упаковывается и отправляется на склад для последующей отгрузки клиентам.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- Access developer insights and resources (light) -->
-    <section id="resources" class="resources section" aria-labelledby="resources-title">
-      <div class="container">
-        <h2 id="resources-title" class="typo-h1 section-title">Access developer insights and resources</h2>
-        <div class="card-grid-3-light">
-          <article class="resource-card" aria-label="Guide: Designing DX-first SDKs">
-            <h3 class="typo-h2">Guide: Designing DX-first SDKs</h3>
-            <p class="typo-body">Principles and patterns from battle-tested open source projects.</p>
-          </article>
-
-          <article class="resource-card" aria-label="Checklist: Production Docs">
-            <h3 class="typo-h2">Checklist: Production Docs</h3>
-            <p class="typo-body">A practical checklist to ship world-class developer docs.</p>
-          </article>
-
-          <article class="resource-card" aria-label="Playbook: Platform Tooling">
-            <h3 class="typo-h2">Playbook: Platform Tooling</h3>
-            <p class="typo-body">From CLIs to release automation: what to standardize and why.</p>
-          </article>
+    <section id="contact" class="services section dark-section" aria-labelledby="final-cta-title">
+      <div class="container" style="text-align: center;">
+        <h2 id="final-cta-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Давайте решим вашу задачу по материалам.</h2>
+        <div class="hero-cta" style="justify-content: center;">
+          <a href="#contact" class="btn btn-primary-onDark typo-link">Запросить консультацию эксперта</a>
         </div>
       </div>
     </section>
@@ -371,39 +355,14 @@
       <h2 id="footer-title" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;">Footer</h2>
       <div class="cols">
         <div>
-          <h4 class="typo-h2" style="font-size: 1rem;">Services</h4>
+          <h4 class="typo-h2" style="font-size: 1rem;">Документы</h4>
           <ul style="list-style: none; padding: 0; margin: 0;">
-            <li><a href="#services" class="typo-link">SDK Development</a></li>
-            <li><a href="#services" class="typo-link">DX & Docs</a></li>
-            <li><a href="#services" class="typo-link">Platform Tooling</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="typo-h2" style="font-size: 1rem;">Products</h4>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li><a href="#oss" class="typo-link">Libraries</a></li>
-            <li><a href="#oss" class="typo-link">CLIs</a></li>
-            <li><a href="#oss" class="typo-link">Templates</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="typo-h2" style="font-size: 1rem;">Resources</h4>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li><a href="#resources" class="typo-link">Guides</a></li>
-            <li><a href="#resources" class="typo-link">Checklists</a></li>
-            <li><a href="#resources" class="typo-link">Playbooks</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="typo-h2" style="font-size: 1rem;">Company</h4>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li><a href="#company" class="typo-link">About</a></li>
-            <li><a href="#blog" class="typo-link">Blog</a></li>
-            <li><a href="#contact" class="typo-link">Contact</a></li>
+            <li><a href="#privacy" class="typo-link">Политика конфиденциальности</a></li>
+            <li><a href="#terms" class="typo-link">Условия использования</a></li>
           </ul>
         </div>
       </div>
-      <p class="copyright">© 2025 Invertase. All rights reserved.</p>
+      <p class="copyright">© 2024 Строймаш. Производство резиновых смесей с гарантированным качеством.</p>
     </div>
   </footer>
 </body>
