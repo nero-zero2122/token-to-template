@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invertase — Empower developers. Engineer excellence.</title>
+  <meta name="description" content="We engineer world‑class developer experiences: SDKs, docs, and platform tooling that scale." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="canonical" href="/landing.html" />
+  <meta property="og:title" content="Invertase — Developer Experience & Engineering" />
+  <meta property="og:description" content="We engineer world‑class developer experiences: SDKs, docs, and platform tooling that scale." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+  <style>
+    /* Design tokens from JSON — referenced as CSS variables
+       Example mapping: tokens.colors.brand.primary -> --tokens-colors-brand-primary */
+    :root {
+      /* colors.brand */
+      --tokens-colors-brand-primary: #00FFC2; /* tokens.colors.brand.primary */
+
+      /* colors.ui.dark */
+      --tokens-colors-ui-dark-background: #0A0A0A; /* tokens.colors.ui.dark.background */
+      --tokens-colors-ui-dark-surface: #181818;    /* tokens.colors.ui.dark.surface */
+      --tokens-colors-ui-dark-surfaceHover: #2E2E2E; /* tokens.colors.ui.dark.surfaceHover */
+
+      /* colors.ui.light */
+      --tokens-colors-ui-light-background: #F9FAFB; /* tokens.colors.ui.light.background */
+      --tokens-colors-ui-light-surface: #FFFFFF;    /* tokens.colors.ui.light.surface */
+
+      /* colors.text.dark */
+      --tokens-colors-text-dark-primary: #FFFFFF;   /* tokens.colors.text.dark.primary */
+      --tokens-colors-text-dark-secondary: #A1A1AA; /* tokens.colors.text.dark.secondary */
+      --tokens-colors-text-dark-tertiary: #71717A;  /* tokens.colors.text.dark.tertiary */
+
+      /* colors.text.light */
+      --tokens-colors-text-light-primary: #18181B;  /* tokens.colors.text.light.primary */
+      --tokens-colors-text-light-secondary: #52525B;/* tokens.colors.text.light.secondary */
+
+      /* colors.border */
+      --tokens-colors-border-dark-default: #27272A;      /* tokens.colors.border.dark.default */
+      --tokens-colors-border-dark-interactive: #555555;  /* tokens.colors.border.dark.interactive */
+      --tokens-colors-border-light-default: #E4E4E7;     /* tokens.colors.border.light.default */
+
+      /* shadow colors */
+      --tokens-colors-shadow-lightTheme: rgba(0, 0, 0, 0.05);         /* tokens.shadow.lightTheme */
+      --tokens-colors-shadow-lightThemeHover: rgba(0, 0, 0, 0.1);     /* tokens.shadow.lightThemeHover */
+      --tokens-colors-shadow-accentGlow: rgba(0, 255, 194, 0.15);     /* tokens.shadow.accentGlow */
+      --tokens-colors-shadow-darkGlow: rgba(24, 24, 24, 0.8);         /* tokens.shadow.darkGlow */
+
+      /* typography */
+      --tokens-typography-fontFamily: Inter, sans-serif; /* tokens.typography.fontFamily */
+      --tokens-typography-display-size: 4.5rem;          /* tokens.typography.scale.display.fontSize */
+      --tokens-typography-display-weight: 700;           /* tokens.typography.scale.display.fontWeight */
+      --tokens-typography-display-lineHeight: 1.1;       /* tokens.typography.scale.display.lineHeight */
+
+      --tokens-typography-h1-size: 3rem;                 /* tokens.typography.scale.h1.fontSize */
+      --tokens-typography-h1-weight: 700;                /* tokens.typography.scale.h1.fontWeight */
+      --tokens-typography-h1-lineHeight: 1.2;            /* tokens.typography.scale.h1.lineHeight */
+
+      --tokens-typography-h2-size: 1.5rem;               /* tokens.typography.scale.h2.fontSize */
+      --tokens-typography-h2-weight: 600;                /* tokens.typography.scale.h2.fontWeight */
+      --tokens-typography-h2-lineHeight: 1.4;            /* tokens.typography.scale.h2.lineHeight */
+
+      --tokens-typography-bodyLarge-size: 1.125rem;      /* tokens.typography.scale.bodyLarge.fontSize */
+      --tokens-typography-bodyLarge-weight: 400;         /* tokens.typography.scale.bodyLarge.fontWeight */
+      --tokens-typography-bodyLarge-lineHeight: 1.6;     /* tokens.typography.scale.bodyLarge.lineHeight */
+
+      --tokens-typography-body-size: 1rem;               /* tokens.typography.scale.bodyDefault.fontSize */
+      --tokens-typography-body-weight: 400;              /* tokens.typography.scale.bodyDefault.fontWeight */
+      --tokens-typography-body-lineHeight: 1.5;          /* tokens.typography.scale.bodyDefault.lineHeight */
+
+      --tokens-typography-link-size: 1rem;               /* tokens.typography.scale.link.fontSize */
+      --tokens-typography-link-weight: 500;              /* tokens.typography.scale.link.fontWeight */
+      --tokens-typography-link-lineHeight: 1.5;          /* tokens.typography.scale.link.lineHeight */
+
+      --tokens-typography-caption-size: 0.875rem;        /* tokens.typography.scale.caption.fontSize */
+      --tokens-typography-caption-weight: 400;           /* tokens.typography.scale.caption.fontWeight */
+      --tokens-typography-caption-lineHeight: 1.5;       /* tokens.typography.scale.caption.lineHeight */
+
+      /* spacing scale */
+      --tokens-spacing-xs: 4px;   /* tokens.spacing.scale.xs */
+      --tokens-spacing-s: 8px;    /* tokens.spacing.scale.s */
+      --tokens-spacing-m: 16px;   /* tokens.spacing.scale.m */
+      --tokens-spacing-l: 24px;   /* tokens.spacing.scale.l */
+      --tokens-spacing-xl: 32px;  /* tokens.spacing.scale.xl */
+      --tokens-spacing-xxl: 48px; /* tokens.spacing.scale.xxl */
+      --tokens-spacing-xxxl: 64px;/* tokens.spacing.scale.xxxl */
+
+      /* effects.borderRadii */
+      --tokens-effects-borderRadii-s: 4px;     /* tokens.effects.borderRadii.s */
+      --tokens-effects-borderRadii-m: 8px;     /* tokens.effects.borderRadii.m */
+      --tokens-effects-borderRadii-l: 12px;    /* tokens.effects.borderRadii.l */
+      --tokens-effects-borderRadii-xl: 16px;   /* tokens.effects.borderRadii.xl */
+      --tokens-effects-borderRadii-full: 9999px; /* tokens.effects.borderRadii.full */
+
+      /* effects.shadows */
+      --tokens-effects-shadows-cardLight: 0px 4px 12px var(--tokens-colors-shadow-lightTheme);         /* tokens.effects.shadows.cardLight */
+      --tokens-effects-shadows-cardLightHover: 0px 8px 24px var(--tokens-colors-shadow-lightThemeHover);/* tokens.effects.shadows.cardLightHover */
+      --tokens-effects-shadows-glowAccent: 0px 0px 150px 50px var(--tokens-colors-shadow-accentGlow);   /* tokens.effects.shadows.glowAccent */
+      --tokens-effects-shadows-glowDark: 0px 0px 100px 30px var(--tokens-colors-shadow-darkGlow);       /* tokens.effects.shadows.glowDark */
+
+      /* effects.gradients */
+      --tokens-effects-gradients-cardInteractiveDark: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); /* tokens.effects.gradients.cardInteractiveDark */
+      --tokens-effects-gradients-cardAccentTeal: linear-gradient(120deg, #0F3E3E, #0A0A0A); /* tokens.effects.gradients.cardAccentTeal */
+    }
+
+    /* Base */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--tokens-typography-fontFamily);
+      color: var(--tokens-colors-text-dark-primary); /* tokens.colors.text.dark.primary */
+      background: var(--tokens-colors-ui-dark-background); /* tokens.colors.ui.dark.background */
+    }
+
+    /* Layout utilities (spacing strictly from tokens.spacing) */
+    .container { width: min(1120px, calc(100% - calc(var(--tokens-spacing-xxl) * 2))); margin-inline: auto; }
+    .section { padding-block: var(--tokens-spacing-xxxl); }
+
+    /* Typography utilities from tokens.typography */
+    .typo-display { font-size: var(--tokens-typography-display-size); font-weight: var(--tokens-typography-display-weight); line-height: var(--tokens-typography-display-lineHeight); margin: 0; letter-spacing: -0.01em; color: var(--tokens-colors-text-dark-primary); }
+    .typo-h1 { font-size: var(--tokens-typography-h1-size); font-weight: var(--tokens-typography-h1-weight); line-height: var(--tokens-typography-h1-lineHeight); margin: 0; }
+    .typo-h2 { font-size: var(--tokens-typography-h2-size); font-weight: var(--tokens-typography-h2-weight); line-height: var(--tokens-typography-h2-lineHeight); margin: 0; }
+    .typo-bodyLarge { font-size: var(--tokens-typography-bodyLarge-size); font-weight: var(--tokens-typography-bodyLarge-weight); line-height: var(--tokens-typography-bodyLarge-lineHeight); margin: 0; }
+    .typo-body { font-size: var(--tokens-typography-body-size); font-weight: var(--tokens-typography-body-weight); line-height: var(--tokens-typography-body-lineHeight); margin: 0; }
+    .typo-link { font-size: var(--tokens-typography-link-size); font-weight: var(--tokens-typography-link-weight); line-height: var(--tokens-typography-link-lineHeight); }
+    .typo-caption { font-size: var(--tokens-typography-caption-size); font-weight: var(--tokens-typography-caption-weight); line-height: var(--tokens-typography-caption-lineHeight); margin: 0; }
+
+    /* Header (transparent) */
+    .header { position: sticky; top: 0; z-index: 10; background: transparent; padding-block: var(--tokens-spacing-l); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--tokens-spacing-xl); }
+    .nav-left { display: flex; align-items: center; gap: var(--tokens-spacing-xl); }
+    .logo { color: var(--tokens-colors-text-dark-primary); font-weight: 700; letter-spacing: 0.04em; text-decoration: none; }
+    .nav-links { display: flex; gap: var(--tokens-spacing-l); }
+    .nav-link { color: var(--tokens-colors-text-dark-secondary); text-decoration: none; }
+    .nav-link:hover { color: var(--tokens-colors-text-dark-primary); }
+
+    /* Buttons (components.button) */
+    .btn { border: none; cursor: pointer; border-radius: var(--tokens-effects-borderRadii-m); padding: var(--tokens-spacing-s) var(--tokens-spacing-l); }
+    .btn-primary-onDark { /* components.button.primary.onDark.states.default */ background: var(--tokens-colors-ui-dark-surface); color: var(--tokens-colors-text-dark-primary); border: 1px solid var(--tokens-colors-border-dark-default); text-decoration: none; display: inline-block; }
+    .btn-primary-onDark:hover { /* components.button.primary.onDark.states.hover */ background: var(--tokens-colors-ui-dark-surfaceHover); border-color: var(--tokens-colors-border-dark-interactive); }
+    .btn-secondary-onDark { /* components.button.secondary.onDark */ background: transparent; color: var(--tokens-colors-text-dark-secondary); border: none; padding: 0; text-decoration: none; }
+    .btn-secondary-onDark:hover { color: var(--tokens-colors-text-dark-primary); }
+    .btn-tertiary { /* components.button.tertiary */ background: transparent; color: var(--tokens-colors-brand-primary); border: none; padding: 0; text-decoration: none; }
+    .btn-tertiary:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero { background: var(--tokens-colors-ui-dark-background); position: relative; }
+    .hero-inner { display: grid; gap: var(--tokens-spacing-xl); text-align: center; place-items: center; }
+    .hero-sub { color: var(--tokens-colors-text-dark-secondary); max-width: 760px; margin-inline: auto; }
+    .hero-cta { display: flex; gap: var(--tokens-spacing-m); justify-content: center; }
+    .hero-glow { position: absolute; inset: 0; pointer-events: none; }
+    .hero-glow::before { /* tokens.effects.shadows.glowAccent */ content: ""; position: absolute; left: 50%; top: 35%; width: 0; height: 0; transform: translate(-50%, -50%); box-shadow: var(--tokens-effects-shadows-glowAccent); border-radius: var(--tokens-effects-borderRadii-full); filter: blur(0.5px); }
+
+    /* Services (components.card.serviceCard) */
+    .services { background: var(--tokens-colors-ui-dark-background); }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--tokens-spacing-xl); margin-top: var(--tokens-spacing-xxl); }
+    .service-card { background: transparent; border: 1px solid var(--tokens-colors-border-dark-default); border-radius: var(--tokens-effects-borderRadii-l); padding: var(--tokens-spacing-l); display: grid; gap: var(--tokens-spacing-m); }
+    .service-icon { color: var(--tokens-colors-brand-primary); width: 24px; height: 24px; }
+    .service-heading { color: var(--tokens-colors-text-dark-primary); }
+    .service-body { color: var(--tokens-colors-text-dark-secondary); }
+
+    /* Open source products (components.card.productCard) */
+    .products { background: var(--tokens-colors-ui-dark-background); }
+    .card-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--tokens-spacing-xl); margin-top: var(--tokens-spacing-xxl); }
+    .product-card { background: var(--tokens-colors-ui-dark-surface); border: 1px solid var(--tokens-colors-border-dark-default); border-radius: var(--tokens-effects-borderRadii-l); padding: var(--tokens-spacing-m); transition: all 0.2s ease-in-out; position: relative; display: grid; gap: var(--tokens-spacing-m); }
+    .product-card:hover { background-image: var(--tokens-effects-gradients-cardInteractiveDark); border-color: var(--tokens-colors-border-dark-interactive); }
+    .product-icon-wrap { background: linear-gradient(180deg, #1E1E1E 0%, #141414 100%); border-radius: var(--tokens-effects-borderRadii-m); padding: var(--tokens-spacing-s); width: 40px; height: 40px; display: grid; place-items: center; }
+    .product-icon { color: var(--tokens-colors-text-dark-primary); width: 20px; height: 20px; }
+
+    /* Resources (light) - components.card.resourceCard */
+    .resources { background: var(--tokens-colors-ui-light-background); color: var(--tokens-colors-text-light-primary); }
+    .resources .section-title { color: var(--tokens-colors-text-light-primary); }
+    .card-grid-3-light { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--tokens-spacing-xl); margin-top: var(--tokens-spacing-xxl); }
+    .resource-card { background: var(--tokens-colors-ui-light-surface); border: 1px solid var(--tokens-colors-border-light-default); border-radius: var(--tokens-effects-borderRadii-l); padding: var(--tokens-spacing-l); box-shadow: var(--tokens-effects-shadows-cardLight); transition: all 0.2s ease-in-out; }
+    .resource-card:hover { transform: translateY(-4px); box-shadow: var(--tokens-effects-shadows-cardLightHover); }
+    .resource-card h3 { color: var(--tokens-colors-text-light-primary); }
+    .resource-card p { color: var(--tokens-colors-text-light-secondary); }
+
+    /* Footer */
+    .footer { background: var(--tokens-colors-ui-dark-background); color: var(--tokens-colors-text-dark-secondary); }
+    .footer .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--tokens-spacing-xl); }
+    .footer h4 { color: var(--tokens-colors-text-dark-primary); margin: 0 0 var(--tokens-spacing-m) 0; font-weight: 600; }
+    .footer a { color: var(--tokens-colors-text-dark-secondary); text-decoration: none; }
+    .footer a:hover { color: var(--tokens-colors-text-dark-primary); }
+    .footer .copyright { color: var(--tokens-colors-text-dark-tertiary); margin-top: var(--tokens-spacing-xxl); padding-top: var(--tokens-spacing-l); border-top: 1px solid var(--tokens-colors-border-dark-default); font-size: var(--tokens-typography-caption-size); }
+
+    /* Responsive */
+    @media (max-width: 1200px) { .card-grid-5 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .card-grid-3, .card-grid-3-light { grid-template-columns: 1fr; }
+      .card-grid-5 { grid-template-columns: repeat(2, 1fr); }
+      .typo-display { font-size: 3rem; line-height: 1.15; }
+      .typo-h1 { font-size: 2rem; }
+    }
+    @media (max-width: 560px) { .card-grid-5 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <!-- Header (transparent) -->
+  <header class="header" role="banner">
+    <div class="container nav">
+      <div class="nav-left">
+        <a href="#" class="logo typo-link" aria-label="Invertase logo">INVERTASE</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a class="nav-link typo-link" href="#services">Services</a>
+          <a class="nav-link typo-link" href="#oss">Open source</a>
+          <a class="nav-link typo-link" href="#products">Products</a>
+          <a class="nav-link typo-link" href="#blog">Blog</a>
+          <a class="nav-link typo-link" href="#company">Company</a>
+        </nav>
+      </div>
+      <div>
+        <a href="#contact" class="btn btn-primary-onDark typo-link">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <!-- Hero Section -->
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="typo-caption" style="color: var(--tokens-colors-text-dark-tertiary); margin-bottom: var(--tokens-spacing-s);">TRUSTED BY INDUSTRY LEADERS</p>
+        <h1 id="hero-title" class="typo-display">Empower developers. Engineer excellence.</h1>
+        <p class="typo-bodyLarge hero-sub">We help technology companies provide exceptional developer experiences with premium SDKs, documentation, and robust platform tooling that scales.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary-onDark typo-link">Book a consultation</a>
+          <a href="#services" class="btn btn-secondary-onDark typo-link">Explore our services →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our services -->
+    <section id="services" class="services section" aria-labelledby="services-title">
+      <div class="container">
+        <h2 id="services-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Our services</h2>
+        <div class="card-grid-3">
+          <article class="service-card" aria-label="SDK Design & Development">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <h3 class="service-heading typo-h2">SDK Design & Development</h3>
+            <p class="service-body typo-body">We craft ergonomic, well-documented SDKs that developers love to adopt and maintain.</p>
+            <a href="#consult" class="btn-tertiary typo-link">Learn more →</a>
+          </article>
+
+          <article class="service-card" aria-label="Developer Docs & DX">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8"/></svg>
+            </div>
+            <h3 class="service-heading typo-h2">Developer Docs & DX</h3>
+            <p class="service-body typo-body">From IA to code samples, we build documentation systems that reduce time-to-first-success.</p>
+            <a href="#consult" class="btn-tertiary typo-link">Learn more →</a>
+          </article>
+
+          <article class="service-card" aria-label="Platform Tooling">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+            </div>
+            <h3 class="service-heading typo-h2">Platform Tooling</h3>
+            <p class="service-body typo-body">We design and build CLI tools, build pipelines, and release automation for scale.</p>
+            <a href="#consult" class="btn-tertiary typo-link">Learn more →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empowering developers through open source -->
+    <section id="oss" class="products section" aria-labelledby="oss-title">
+      <div class="container">
+        <h2 id="oss-title" class="typo-h1 section-title" style="color: var(--tokens-colors-text-dark-primary);">Empowering developers through open source</h2>
+        <div class="card-grid-5">
+          <article class="product-card" aria-label="Package A">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v8l-7 4-7-4V6z"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Package A</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">A reliable library for modern app development.</p>
+          </article>
+
+          <article class="product-card" aria-label="Tool B">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Tool B</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">CLI to streamline developer workflows.</p>
+          </article>
+
+          <article class="product-card" aria-label="SDK C">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">SDK C</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Powerful SDK with first-class TypeScript types.</p>
+          </article>
+
+          <article class="product-card" aria-label="Infra D">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M12 4v16"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Infra D</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Scalable infra templates and best practices.</p>
+          </article>
+
+          <article class="product-card" aria-label="Docs E">
+            <div class="product-icon-wrap"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M3 12h18"/><path d="M3 17h18"/></svg></div>
+            <h3 class="typo-h2" style="color: var(--tokens-colors-text-dark-primary);">Docs E</h3>
+            <p class="typo-body" style="color: var(--tokens-colors-text-dark-secondary);">Documentation kits for fast onboarding.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Access developer insights and resources (light) -->
+    <section id="resources" class="resources section" aria-labelledby="resources-title">
+      <div class="container">
+        <h2 id="resources-title" class="typo-h1 section-title">Access developer insights and resources</h2>
+        <div class="card-grid-3-light">
+          <article class="resource-card" aria-label="Guide: Designing DX-first SDKs">
+            <h3 class="typo-h2">Guide: Designing DX-first SDKs</h3>
+            <p class="typo-body">Principles and patterns from battle-tested open source projects.</p>
+          </article>
+
+          <article class="resource-card" aria-label="Checklist: Production Docs">
+            <h3 class="typo-h2">Checklist: Production Docs</h3>
+            <p class="typo-body">A practical checklist to ship world-class developer docs.</p>
+          </article>
+
+          <article class="resource-card" aria-label="Playbook: Platform Tooling">
+            <h3 class="typo-h2">Playbook: Platform Tooling</h3>
+            <p class="typo-body">From CLIs to release automation: what to standardize and why.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer section" aria-labelledby="footer-title">
+    <div class="container">
+      <h2 id="footer-title" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;">Footer</h2>
+      <div class="cols">
+        <div>
+          <h4 class="typo-h2" style="font-size: 1rem;">Services</h4>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li><a href="#services" class="typo-link">SDK Development</a></li>
+            <li><a href="#services" class="typo-link">DX & Docs</a></li>
+            <li><a href="#services" class="typo-link">Platform Tooling</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="typo-h2" style="font-size: 1rem;">Products</h4>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li><a href="#oss" class="typo-link">Libraries</a></li>
+            <li><a href="#oss" class="typo-link">CLIs</a></li>
+            <li><a href="#oss" class="typo-link">Templates</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="typo-h2" style="font-size: 1rem;">Resources</h4>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li><a href="#resources" class="typo-link">Guides</a></li>
+            <li><a href="#resources" class="typo-link">Checklists</a></li>
+            <li><a href="#resources" class="typo-link">Playbooks</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="typo-h2" style="font-size: 1rem;">Company</h4>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li><a href="#company" class="typo-link">About</a></li>
+            <li><a href="#blog" class="typo-link">Blog</a></li>
+            <li><a href="#contact" class="typo-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Invertase. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
