@@ -120,7 +120,7 @@
     }
 
     /* Layout utilities (spacing strictly from tokens.spacing) */
-    .container { width: min(1120px, calc(100% - calc(var(--tokens-spacing-xxl) * 2))); margin-inline: auto; }
+    .container { width: min(1280px, calc(100% - calc(var(--tokens-spacing-xxl) * 2))); margin-inline: auto; }
     .section { padding-block: var(--tokens-spacing-xxxl); }
 
     /* Typography utilities from tokens.typography */
@@ -152,15 +152,22 @@
 
     /* Hero */
     .hero { background: var(--tokens-colors-ui-dark-background); position: relative; }
-    .hero-inner { display: grid; gap: var(--tokens-spacing-xl); text-align: center; place-items: center; }
-    .hero-sub { color: var(--tokens-colors-text-dark-secondary); max-width: 760px; margin-inline: auto; }
-    .hero-cta { display: flex; gap: var(--tokens-spacing-m); justify-content: center; }
-    .hero-glow { position: absolute; inset: 0; pointer-events: none; }
-    .hero-glow::before { /* tokens.effects.shadows.glowAccent */ content: ""; position: absolute; left: 50%; top: 35%; width: 0; height: 0; transform: translate(-50%, -50%); box-shadow: var(--tokens-effects-shadows-glowAccent); border-radius: var(--tokens-effects-borderRadii-full); filter: blur(0.5px); }
+    .hero-inner { display: flex; align-items: center; gap: var(--tokens-spacing-xxl); }
+    .hero-left { flex: 0 0 55%; max-width: 55%; }
+    .hero-right { position: relative; flex: 0 0 45%; max-width: 45%; }
+    .hero-sub { color: var(--tokens-colors-text-dark-secondary); margin-top: var(--tokens-spacing-m); max-width: 56ch; }
+    .hero-cta { display: flex; gap: var(--tokens-spacing-m); justify-content: flex-start; margin-top: var(--tokens-spacing-l); }
+    .trusted-by { display: flex; gap: var(--tokens-spacing-l); margin-top: var(--tokens-spacing-l); }
+    .hero-image { display: block; width: 100%; height: auto; border-radius: var(--tokens-effects-borderRadii-xl); }
+    .glow-accent { content: ""; position: absolute; left: 50%; top: 50%; width: 460px; height: 460px; transform: translate(-50%, -50%); border-radius: var(--tokens-effects-borderRadii-full); box-shadow: var(--tokens-effects-shadows-glowAccent); z-index: -1; }
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column; }
+      .hero-left, .hero-right { flex: 0 0 auto; max-width: 100%; width: 100%; }
+    }
 
     /* Services (components.card.serviceCard) */
     .services { background: var(--tokens-colors-ui-dark-background); }
-    .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--tokens-spacing-xl); margin-top: var(--tokens-spacing-xxl); }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--tokens-spacing-l); margin-top: var(--tokens-spacing-xxl); }
     .service-card { background: transparent; border: 1px solid var(--tokens-colors-border-dark-default); border-radius: var(--tokens-effects-borderRadii-l); padding: var(--tokens-spacing-l); display: grid; gap: var(--tokens-spacing-m); }
     .service-icon { color: var(--tokens-colors-brand-primary); width: 24px; height: 24px; }
     .service-heading { color: var(--tokens-colors-text-dark-primary); }
@@ -168,7 +175,7 @@
 
     /* Open source products (components.card.productCard) */
     .products { background: var(--tokens-colors-ui-dark-background); }
-    .card-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--tokens-spacing-xl); margin-top: var(--tokens-spacing-xxl); }
+    .card-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--tokens-spacing-l); margin-top: var(--tokens-spacing-xxl); }
     .product-card { background: var(--tokens-colors-ui-dark-surface); border: 1px solid var(--tokens-colors-border-dark-default); border-radius: var(--tokens-effects-borderRadii-l); padding: var(--tokens-spacing-m); transition: all 0.2s ease-in-out; position: relative; display: grid; gap: var(--tokens-spacing-m); }
     .product-card:hover { background-image: var(--tokens-effects-gradients-cardInteractiveDark); border-color: var(--tokens-colors-border-dark-interactive); }
     .product-icon-wrap { background: linear-gradient(180deg, #1E1E1E 0%, #141414 100%); border-radius: var(--tokens-effects-borderRadii-m); padding: var(--tokens-spacing-s); width: 40px; height: 40px; display: grid; place-items: center; }
@@ -177,7 +184,7 @@
     /* Resources (light) - components.card.resourceCard */
     .resources { background: var(--tokens-colors-ui-light-background); color: var(--tokens-colors-text-light-primary); }
     .resources .section-title { color: var(--tokens-colors-text-light-primary); }
-    .card-grid-3-light { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--tokens-spacing-xl); margin-top: var(--tokens-spacing-xxl); }
+    .card-grid-3-light { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--tokens-spacing-l); margin-top: var(--tokens-spacing-xxl); }
     .resource-card { background: var(--tokens-colors-ui-light-surface); border: 1px solid var(--tokens-colors-border-light-default); border-radius: var(--tokens-effects-borderRadii-l); padding: var(--tokens-spacing-l); box-shadow: var(--tokens-effects-shadows-cardLight); transition: all 0.2s ease-in-out; }
     .resource-card:hover { transform: translateY(-4px); box-shadow: var(--tokens-effects-shadows-cardLightHover); }
     .resource-card h3 { color: var(--tokens-colors-text-light-primary); }
@@ -226,14 +233,23 @@
   <main role="main">
     <!-- Hero Section -->
     <section class="hero section" aria-labelledby="hero-title">
-      <div class="hero-glow" aria-hidden="true"></div>
       <div class="container hero-inner">
-        <p class="typo-caption" style="color: var(--tokens-colors-text-dark-tertiary); margin-bottom: var(--tokens-spacing-s);">TRUSTED BY INDUSTRY LEADERS</p>
-        <h1 id="hero-title" class="typo-display">Empower developers. Engineer excellence.</h1>
-        <p class="typo-bodyLarge hero-sub">We help technology companies provide exceptional developer experiences with premium SDKs, documentation, and robust platform tooling that scales.</p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary-onDark typo-link">Book a consultation</a>
-          <a href="#services" class="btn btn-secondary-onDark typo-link">Explore our services →</a>
+        <div class="hero-left">
+          <h1 id="hero-title" class="typo-display">Empower developers. Engineer excellence.</h1>
+          <p class="typo-bodyLarge hero-sub">We help technology companies provide exceptional developer experiences with premium SDKs, documentation, and robust platform tooling that scales.</p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary-onDark typo-link">Book a consultation</a>
+            <a href="#services" class="btn btn-secondary-onDark typo-link">Explore our services →</a>
+          </div>
+          <div class="trusted-by">
+            <span class="typo-caption" style="color: var(--tokens-colors-text-dark-tertiary);">Google</span>
+            <span class="typo-caption" style="color: var(--tokens-colors-text-dark-tertiary);">amazon</span>
+            <span class="typo-caption" style="color: var(--tokens-colors-text-dark-tertiary);">Canonical</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="glow-accent" aria-hidden="true"></div>
+          <img src="https://via.placeholder.com/450x400" alt="Abstract 3D graphic" class="hero-image" loading="lazy" width="450" height="400" />
         </div>
       </div>
     </section>
