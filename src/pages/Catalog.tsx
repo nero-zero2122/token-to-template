@@ -43,7 +43,7 @@ export default function Catalog() {
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute("href", "/catalog");
+    canonical.setAttribute("href", "/");
   }, []);
 
   // Filters
