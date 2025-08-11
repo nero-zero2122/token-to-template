@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -25,7 +26,7 @@ type QueryResult = { items: CatalogItem[]; count: number };
 export default function Catalog() {
   // SEO tags
   useEffect(() => {
-    document.title = "Каталог резиновых смесей — фильтры";
+    document.title = "Каталог резиновых смесей — Строймаш";
     const ensureMeta = (name: string, content: string) => {
       let tag = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
       if (!tag) {
@@ -35,7 +36,7 @@ export default function Catalog() {
       }
       tag.setAttribute("content", content);
     };
-    ensureMeta("description", "Каталог резиновых смесей из Supabase с поиском и фильтрами.");
+    ensureMeta("description", "Каталог резиновых смесей: марка, ТУ и полные характеристики.");
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) {
@@ -43,27 +44,22 @@ export default function Catalog() {
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute("href", "/");
+    canonical.setAttribute("href", "/catalog");
   }, []);
 
   // Filters
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [purpose, setPurpose] = useState("");
-  const [hardMin, setHardMin] = useState<string>("");
-  const [hardMax, setHardMax] = useState<string>("");
-  const [sort, setSort] = useState<"marka" | "hardness" | "tu">("marka");
+  const [sort, setSort] = useState<"marka" | "tu">("marka");
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["catalog", page, search, purpose, sort],
+    queryKey: ["catalog", page, search, sort],
     queryFn: async () => {
       const client: any = supabase as any;
       let query = client.from("rubber_catalog").select("*", { count: "exact" });
 
       if (search.trim()) query = query.ilike("marka", `%${search.trim()}%`);
-      if (purpose.trim()) query = query.ilike("purpose", `%${purpose.trim()}%`);
 
-      // Server-side sort by marka; hardness sort is handled client-side since column is text
       const orderColumn = sort === "tu" ? "tu" : "marka";
       query = query.order(orderColumn, { ascending: true });
 
@@ -75,29 +71,8 @@ export default function Catalog() {
     },
   });
 
-  // Client-side hardness filter + optional sort by hardness
-  const filtered = useMemo(() => {
-    const min = hardMin ? parseFloat(hardMin) : Number.NEGATIVE_INFINITY;
-    const max = hardMax ? parseFloat(hardMax) : Number.POSITIVE_INFINITY;
-
-    const toNum = (v?: string | null) => {
-      if (!v) return NaN;
-      const n = parseFloat(String(v).replace(",", "."));
-      return isFinite(n) ? n : NaN;
-    };
-
-    let items = (data?.items ?? []).filter((i) => {
-      const h = toNum(i.hardness_shore_a);
-      if (isNaN(h)) return hardMin === "" && hardMax === ""; // if not numeric, only include when no range set
-      return h >= min && h <= max;
-    });
-
-    if (sort === "hardness") {
-      items = items.slice().sort((a, b) => (toNum(a.hardness_shore_a) || 0) - (toNum(b.hardness_shore_a) || 0));
-    }
-
-    return items;
-  }, [data?.items, hardMin, hardMax, sort]);
+  // Результаты (без клиентских фильтров твердости)
+  const filtered = data?.items ?? [];
 
   const total = data?.count ?? 0;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -110,38 +85,26 @@ export default function Catalog() {
       </header>
 
       <section className="container mx-auto max-w-6xl pb-6">
-        <div className="grid gap-4 md:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-3">
           <div className="space-y-2">
             <label className="text-sm">Поиск по марке</label>
             <Input placeholder="Например: NBR" value={search} onChange={(e) => { setPage(1); setSearch(e.target.value); }} />
           </div>
           <div className="space-y-2">
-            <label className="text-sm">Назначение</label>
-            <Input placeholder="Например: герметик" value={purpose} onChange={(e) => { setPage(1); setPurpose(e.target.value); }} />
+            <label className="text-sm">Сортировка</label>
+            <Select value={sort} onValueChange={(v) => setSort(v as any)}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Выберите сортировку" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="marka">По марке</SelectItem>
+                <SelectItem value="tu">По ТУ</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
-          <div className="space-y-2">
-            <label className="text-sm">Твердость Шор A (мин)</label>
-            <Input inputMode="decimal" placeholder="мин" value={hardMin} onChange={(e) => { setPage(1); setHardMin(e.target.value); }} />
+          <div className="flex items-end">
+            <Button variant="secondary" className="w-full" onClick={() => { setSearch(""); setPage(1); }}>Сбросить</Button>
           </div>
-          <div className="space-y-2">
-            <label className="text-sm">Твердость Шор A (макс)</label>
-            <Input inputMode="decimal" placeholder="макс" value={hardMax} onChange={(e) => { setPage(1); setHardMax(e.target.value); }} />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 mt-4">
-          <label className="text-sm">Сортировка</label>
-          <Select value={sort} onValueChange={(v) => setSort(v as any)}>
-            <SelectTrigger className="w-56">
-              <SelectValue placeholder="Выберите сортировку" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="marka">По марке</SelectItem>
-              <SelectItem value="tu">По ТУ</SelectItem>
-              <SelectItem value="hardness">По твердости (клиентская)</SelectItem>
-            </SelectContent>
-          </Select>
-          <Button variant="secondary" onClick={() => { setSearch(""); setPurpose(""); setHardMin(""); setHardMax(""); setPage(1); }}>Сбросить</Button>
         </div>
       </section>
 
@@ -176,8 +139,30 @@ export default function Catalog() {
               ) : (
                 filtered.map((item, idx) => (
                   <TableRow key={`${item.marka}-${idx}`}>
-                    <TableCell>{item.tu}</TableCell>
-                    <TableCell>{item.marka}</TableCell>
+                    <TableCell>
+                      {item.tu ? (
+                        <Link
+                          to={`/rubber/${encodeURIComponent(item.marka || "")}/${encodeURIComponent(item.tu)}`}
+                          className="text-primary underline-offset-4 hover:underline"
+                        >
+                          {item.tu}
+                        </Link>
+                      ) : (
+                        item.tu
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {item.marka ? (
+                        <Link
+                          to={`/rubber/${encodeURIComponent(item.marka)}/${encodeURIComponent(item.tu || "")}`}
+                          className="text-primary underline-offset-4 hover:underline"
+                        >
+                          {item.marka}
+                        </Link>
+                      ) : (
+                        item.marka
+                      )}
+                    </TableCell>
                     <TableCell>{item.purpose}</TableCell>
                     <TableCell>{item.work_conditions}</TableCell>
                     <TableCell>{item.hardness_shore_a}</TableCell>

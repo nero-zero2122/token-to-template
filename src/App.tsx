@@ -18,7 +18,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          
+          <Route path="/rubber/:marka/:tu" element={<RubberDetail />} />
+          <Route path="/catalog" element={<Catalog />} />
           <Route path="/tools/bg-removal" element={<BgRemoval />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
